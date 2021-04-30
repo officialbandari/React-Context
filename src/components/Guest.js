@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { MyContext } from '../App'
+import { Consumer } from './Context'
 
 class Guest extends Component {
     render() {
         return (
             <div>
                 <h1>Guest Component</h1>
-                <MyContext.Consumer>
+                <Consumer>
                     {({ data, handleClick }) => (
                         <div>
                             <h4>
@@ -15,7 +15,7 @@ class Guest extends Component {
                             <button onClick={handleClick}>ChangeValues</button>
                         </div>
                     )}
-                </MyContext.Consumer>
+                </Consumer>
             </div>
         );
     }
