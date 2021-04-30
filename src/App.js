@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import User from './components/User'
 import './App.css';
+export const MyContext = React.createContext();
+class App extends Component {
+  constructor(props) {
+    super(props)
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    this.state = {
+      name: "Krishna",
+      age: 29
+    }
+  }
+
+  handleChangeContext = () => {
+    this.setState({
+      name: "Bandari",
+      age: 30
+    })
+  }
+
+  render() {
+    const contextValue = {
+      data: this.state,
+      handleClick: this.handleChangeContext
+
+    }
+    return (
+      <div className="App">
+        <MyContext.Provider value={contextValue} >
+          <User />
+        </MyContext.Provider>
+      </div>
+    );
+  }
 }
 
 export default App;
